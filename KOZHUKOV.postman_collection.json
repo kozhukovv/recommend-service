@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "b539131f-3e45-4754-b295-4d6bae122d5f",
+		"name": "KOZHUKOV",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18011636"
+	},
+	"item": [
+		{
+			"name": "POST /recommendations/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"unit\": 1,\n    \"review\": \"some info\",\n    \"stars_count\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000{{PREFIX}}/api/recommendations/"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /units/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name\",\n    \"description\": \"description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000{{PREFIX}}/api/units/"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /recommendations/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000{{PREFIX}}/api/recommendations/"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /units/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000{{PREFIX}}/api/units/"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /recommendations/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000{{PREFIX}}/api/recommendations/1/"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /units/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000{{PREFIX}}/api/units/1"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{PASSWORD}}",
+			"username": "{{USERNAME}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200 or 201\", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 201])",
+					"});",
+					""
+				]
+			}
+		}
+	]
+}
